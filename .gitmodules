@@ -1,0 +1,12 @@
+[submodule "differential-drive"]
+	path = src/differential-drive
+	url = https://github.com/jfstepha/differential-drive.git
+[submodule "ds4_driver"]
+	path = src/ds4_driver
+	url = https://github.com/naoki-mizuno/ds4_driver.git
+[submodule "laser_filters"]
+	path = src/laser_filters
+	url = https://github.com/ros-perception/laser_filters.git
+[submodule "rplidar_ros"]
+	path = src/rplidar_ros
+	url = https://github.com/Slamtec/rplidar_ros.git

@@ -1,0 +1,8 @@
+prefix=/home/jetson/robot_ws/devel
+
+Name: hmi_modules
+Description: Description of hmi_modules
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

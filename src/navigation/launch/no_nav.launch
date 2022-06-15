@@ -1,0 +1,18 @@
+<launch>
+
+    <master auto="start"/>
+    
+    <!-- Base controller nodes -->
+    <include file="$(find differential_drive)/launch/differential_drive.launch" />
+    
+    <!-- LiDAR nodes -->
+    <include file="$(find rplidar_ros)/launch/rplidar.launch" />
+    <include file="$(find laser_filters)/examples/box_filter_example.launch" />
+    
+    <!-- Localization nodes -->
+    <include file="$(find localization)/launch/local_ekf.launch" />
+    
+    <!-- Navigation nodes -->
+    <!--include file="$(find navigation)/launch/nav.launch" /-->
+
+</launch> 

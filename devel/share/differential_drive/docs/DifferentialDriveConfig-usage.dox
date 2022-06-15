@@ -1,0 +1,9 @@
+\subsubsection usage Usage
+\verbatim
+<node name="pid_velocity" pkg="differential_drive" type="pid_velocity">
+  <param name="Kp" type="double" value="100.0" />
+  <param name="Ki" type="double" value="290.0" />
+  <param name="Kd" type="double" value="0.0" />
+</node>
+\endverbatim
+

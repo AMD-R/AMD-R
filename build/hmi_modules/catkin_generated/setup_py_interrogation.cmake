@@ -1,0 +1,7 @@
+set(hmi_modules_SETUP_PY_SETUP_MODULE "distutils.core")
+set(hmi_modules_SETUP_PY_VERSION "0.0.0")
+set(hmi_modules_SETUP_PY_SCRIPTS "")
+set(hmi_modules_SETUP_PY_PACKAGES "hmi_modules")
+set(hmi_modules_SETUP_PY_PACKAGE_DIRS "src/hmi_modules")
+set(hmi_modules_SETUP_PY_MODULES "")
+set(hmi_modules_SETUP_PY_MODULE_DIRS "")
