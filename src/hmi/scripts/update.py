@@ -307,29 +307,9 @@ class Ui_MainWindow(QMainWindow): ##object
         self.haha = 0
         #myList[1] = "Logging Window"
 
-    def day(self, temp):
-        if temp == 0:
-            return "Monday"
-        elif temp == 1:
-            return "Tuesday"
-        elif temp == 2:
-            return "Wednesday"
-        elif temp == 3:
-            return "Thursday"
-        elif temp == 4:
-            return "Friday"
-        elif temp == 5:
-            return "Saturday"
-        elif temp == 6:
-            return "Sunday"
-
     def updateTime(self, temp):
         self.temp = time.localtime()
-        self.tempday = self.day(self.temp.tm_wday)
-        if self.temp.tm_min < 10: 
-            self.current_time = self.tempday + "  " + str(self.temp.tm_hour) + ":" + "0" + str(self.temp.tm_min)
-        else:
-            self.current_time = self.tempday + "  " + str(self.temp.tm_hour) + ":" + str(self.temp.tm_min)
+        self.current_time = time.strftime("%A %H:%M", self.temp)
         self.myTime.setText(str(self.current_time))
         self.myTime.update()
         self.ScrollLabel.verticalScrollBar().setValue(self.ScrollLabel.verticalScrollBar().maximum())
