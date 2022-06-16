@@ -316,6 +316,7 @@ class Ui_MainWindow(QMainWindow): ##object
         self.ScrollLabel.verticalScrollBar().setValue(self.ScrollLabel.verticalScrollBar().maximum())
 
     def updateBattery(self, newbatt):
+        """Updates the battery value widget."""
         self.widget.setValue(newbatt)
         self.update()
 
@@ -428,7 +429,8 @@ class Ui_MainWindow(QMainWindow): ##object
             self.home()
 
     def demo(self):
-        self.updateLog("arm operation here")
+        """Demo button for returning to HOME. (No longer used)"""
+        self.updateLog("Arm operation here")
         rospy.sleep(5)
         self.home()
 
@@ -469,7 +471,8 @@ class Ui_MainWindow(QMainWindow): ##object
             return
 
     def stop(self):
-        self.newtext = "STOP button pressed!Cancelling all operations..."
+        """Emergency STOP callback."""
+        self.newtext = "STOP button pressed! Cancelling all operations..."
         self.updateLog(self.newtext)
         self.cmdvel.linear.x = 0
         self.cmdvel.linear.y = 0
