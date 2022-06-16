@@ -307,7 +307,8 @@ class Ui_MainWindow(QMainWindow): ##object
         self.haha = 0
         #myList[1] = "Logging Window"
 
-    def updateTime(self, temp):
+    def updateTime(self):
+        """Updates time widget."""
         self.temp = time.localtime()
         self.current_time = time.strftime("%A %H:%M", self.temp)
         self.myTime.setText(str(self.current_time))
@@ -520,16 +521,19 @@ class Ui_MainWindow(QMainWindow): ##object
         # self.myExit.setText(_translate("MainWindow", "PushButton"))
         self.myDesc.setText(_translate("MainWindow", "EE Dept   AMD-R\n\nJonathan Lee\nKenji Eu\nChia Yu Hang\nNeo Jie En"))
 
-def batteryTemp(data): # update battery on hmi
+def batteryTemp(data: BatteryState, ui: Ui_MainWindow) -> None:
+    """Update battery on hmi."""
     ui.updateBattery(data.percentage)
-    ui.updateTime(time.localtime())
+    ui.updateTime()
 
-def logTemp_rosout(data): # add debug msg on hmi from ros topics
+def logTemp_rosout(data: String):
+    """Add debug msg on hmi from ros topics."""
     strdata = str(data.data)
     #ui.updateLog("kO")
     ui.ScrollLabel.verticalScrollBar().setValue(ui.ScrollLabel.verticalScrollBar().maximum())
 
-def logTemp_order(data): # order node 
+def logTemp_order(data: Int16):
+    """Order node."""
     ui.updateLog("here")
     tem = str(data.data)
     ui.updateLog(tem)
@@ -547,20 +551,19 @@ if __name__ == "__main__":
 
         # rospy.init_node("sub_batt", anonymous=True)
         rospy.init_node('hmilog', anonymous=True)
-        
-        # rospy.init_node('hmi_cmd_vel', anonymous=True)
-        rospy.Subscriber("hmilog", String, logTemp_rosout)
-        rospy.Subscriber("battery", BatteryState, batteryTemp)
-        rospy.Subscriber("iot/function", Int16, logTemp_order)
-        
-        
+
         app = QtWidgets.QApplication(sys.argv)
         MainWindow = QtWidgets.QMainWindow()
         ui = Ui_MainWindow()
         ui.setupUi(MainWindow)
         MainWindow.showFullScreen()
         ui.updateMission("Idle")
-        
+
+        # rospy.init_node('hmi_cmd_vel', anonymous=True)
+        rospy.Subscriber("hmilog", String, logTemp_rosout)
+        rospy.Subscriber("battery", BatteryState, batteryTemp, ui)
+        rospy.Subscriber("iot/function", Int16, logTemp_order)
+
         sys.exit(app.exec())
     except rospy.ROSInterruptException:
         pass
