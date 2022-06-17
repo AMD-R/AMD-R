@@ -145,6 +145,7 @@ class Ui_MainWindow(QMainWindow): ##object
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
 
+        # Nottingham Logo
         self.myLogo = QtWidgets.QLabel(self.centralwidget)
         self.myLogo.setGeometry(QtCore.QRect(50, 10, 281, 121))
         font = QtGui.QFont()
@@ -156,6 +157,7 @@ class Ui_MainWindow(QMainWindow): ##object
         self.myLogo.setPixmap(QtGui.QPixmap(":/newicon/icons/nott.png"))
         self.myLogo.setObjectName("myLogo")
 
+        # Button to go to trent
         self.myCall = QtWidgets.QPushButton(self.centralwidget)
         self.myCall.setGeometry(QtCore.QRect(50, 130, 281, 141))
         font = QtGui.QFont()
@@ -168,6 +170,7 @@ class Ui_MainWindow(QMainWindow): ##object
         self.myCall.setObjectName("myCall")
         self.myCall.clicked.connect(self.call)
 
+        # Button to go to D block
         self.myHome = QtWidgets.QPushButton(self.centralwidget)
         self.myHome.setGeometry(QtCore.QRect(50, 300, 281, 141))
         font = QtGui.QFont()
@@ -180,7 +183,8 @@ class Ui_MainWindow(QMainWindow): ##object
         self.myHome.setObjectName("myHome")
         self.myHome.show()
         self.myHome.clicked.connect(self.home)
-        
+
+        # Manual Controller for the AMD-R
         self.myManual = QtWidgets.QPushButton(self.centralwidget)
         self.myManual.setGeometry(QtCore.QRect(950, 315, 231, 171))
         font = QtGui.QFont()
@@ -194,6 +198,7 @@ class Ui_MainWindow(QMainWindow): ##object
         self.myManual.setObjectName("myManual")
         self.myManual.clicked.connect(self.openWindow)
 
+        # Progress bar for battery percentage
         self.widget = QRoundProgressBar(self.centralwidget)
         self.widget.setGeometry(QtCore.QRect(535, 140, 261, 221))# 321, 261))
         # self.widget.setAlignment(Qt.AlignCenter)
@@ -222,6 +227,7 @@ class Ui_MainWindow(QMainWindow): ##object
         self.mybar.setValue(self.mybar.maximum())
         self.widget_2.show()
 
+        # Emergency Stop button
         self.myStop = QtWidgets.QPushButton(self.centralwidget)
         self.myStop.setGeometry(QtCore.QRect(950, 130, 231, 171))
         self.myStop.setStyleSheet('QPushButton {background-color: #A3C1DA; color: red;}')
@@ -243,6 +249,7 @@ class Ui_MainWindow(QMainWindow): ##object
         self.myStop.setObjectName("myStop")
         self.myStop.clicked.connect(self.stop)
 
+        # Current Time Label
         self.myTime = QtWidgets.QLabel(self.centralwidget)
         self.myTime.setGeometry(QtCore.QRect(950, 50, 231, 61))
         font = QtGui.QFont()
@@ -251,6 +258,7 @@ class Ui_MainWindow(QMainWindow): ##object
         self.myTime.setAlignment(Qt.AlignCenter)
         self.myTime.setObjectName("myTime")
 
+        # Current Mission Label
         self.myMission = QtWidgets.QLabel(self.centralwidget)
         self.myMission.setGeometry(QtCore.QRect(460, 20, 400, 91))
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
@@ -263,7 +271,8 @@ class Ui_MainWindow(QMainWindow): ##object
         self.myMission.setFont(font)
         self.myMission.setObjectName("myMission")
         #self.myMission.setText(self.label_scroll.text)
-       
+
+        # Battery Level Label
         self.myBatteryLevel = QtWidgets.QLabel(self.centralwidget)
         self.myBatteryLevel.setGeometry(QtCore.QRect(545, 110, 181, 16))
         self.myBatteryLevel.setAlignment(Qt.AlignCenter)
@@ -279,6 +288,7 @@ class Ui_MainWindow(QMainWindow): ##object
         self.myReset.setObjectName("myReset")
         self.myReset.clicked.connect(self.demo_arm)
 
+        # Quit Button
         self.myExit = QtWidgets.QPushButton(self.centralwidget)
         self.myExit.setGeometry(QtCore.QRect(1170, 0, 91, 61))
         icon3 = QtGui.QIcon()
@@ -293,6 +303,7 @@ class Ui_MainWindow(QMainWindow): ##object
         self.myDesc.setFrameShape(QtWidgets.QFrame.Box)
         self.myDesc.setObjectName("myDesc")
 
+        # Status Bar
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 1269, 26))
@@ -305,10 +316,10 @@ class Ui_MainWindow(QMainWindow): ##object
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
         self.haha = 0
-        #myList[1] = "Logging Window"
+        # myList[1] = "Logging Window"
 
     def updateTime(self):
-        """Updates time widget."""
+        """Updates time label."""
         self.temp = time.localtime()
         self.current_time = time.strftime("%A %H:%M", self.temp)
         self.myTime.setText(str(self.current_time))
@@ -316,15 +327,17 @@ class Ui_MainWindow(QMainWindow): ##object
         self.ScrollLabel.verticalScrollBar().setValue(self.ScrollLabel.verticalScrollBar().maximum())
 
     def updateBattery(self, newbatt):
-        """Updates the battery value widget."""
+        """Updates the battery value label."""
         self.widget.setValue(newbatt)
         self.update()
 
     def updateMission(self, newmission):
+        """Updates current mission label."""
         self.myMission.setText("Current Mission: " + newmission)
         self.myMission.setAlignment(Qt.AlignCenter)
         
-    def updateLog(self, newtext): #updates log widget text and autoscrolls
+    def updateLog(self, newtext):
+        """Updates log widget text and autoscrolls."""
         self.haha += 1
         if self.haha >= 20:
             self.label_scroll.text = "Logging Window"
@@ -340,9 +353,11 @@ class Ui_MainWindow(QMainWindow): ##object
         # self.ScrollLabel.verticalScrollBar().setValue(self.ScrollLabel.verticalScrollBar().maximum()) # + self.label_scroll.height())
 
     def exitapp(self):
+        """Button to exit the UI."""
         sys.exit()
         
     def call(self):
+        """Button to move AMD-R to trent."""
         self.newtext = "TRENT button pressed! Heading to Trent..."
         self.updateLog(self.newtext)
         self.updateMission("Heading to Lift")
@@ -393,6 +408,7 @@ class Ui_MainWindow(QMainWindow): ##object
             return
 
     def demo_arm(self):
+        """Button to demo moving the robotic arm."""
         self.updateLog("ARM operation starting")
         self.updateMission("Hailing Lift")
         clientNav(True)
@@ -429,12 +445,13 @@ class Ui_MainWindow(QMainWindow): ##object
             self.home()
 
     def demo(self):
-        """Demo button for returning to HOME. (No longer used)"""
+        """Demo button for returning to HOME. (No longer used)."""
         self.updateLog("Arm operation here")
         rospy.sleep(5)
         self.home()
 
     def home(self):
+        """Button to return to D Block."""
         # self.newtext = "HOME button pressed! Heading to Block D..."
         # self.updateLog(self.newtext)
         self.updateLog("Heading to HOME")
@@ -471,7 +488,7 @@ class Ui_MainWindow(QMainWindow): ##object
             return
 
     def stop(self):
-        """Emergency STOP callback."""
+        """Button to Emergency STOP."""
         self.newtext = "STOP button pressed! Cancelling all operations..."
         self.updateLog(self.newtext)
         self.cmdvel.linear.x = 0
@@ -485,23 +502,31 @@ class Ui_MainWindow(QMainWindow): ##object
         # cancel nav goal, send cmd vel 0, 
 
     def reset(self):
+        """Buttton to reset destination (No Longer Used)."""
         self.newtext = "Cancelling Desitnation..."
         self.updateLog(self.newtext)
 
     def reset_pop(self):
+        """Popup to confirm destination reset (No Longer Used)."""
         msg = QMessageBox()
         msg.setWindowTitle("Reset Window")
         msg.setText("Confirm Reset Destination?")
-        msg.setIcon(QMessageBox.Question) #Warning, Question, Critical, Info
+
+        # Warning, Question, Critical, Info
+        msg.setIcon(QMessageBox.Question)
         msg.setStandardButtons(QMessageBox.Yes | QMessageBox.No)
-        msg.setDefaultButton(QMessageBox.Ok) #default button with blue frame
+
+        # default button with blue frame
+        msg.setDefaultButton(QMessageBox.Ok)
         msg.setInformativeText("Choosing OK will cancel the current destination. Proceed?")
         msg.buttonClicked.connect(self.reset_pop_button)
-        x = msg.exec_() #show message box
+        # show message box
+        x = msg.exec_()
 
-    def reset_pop_button(self, i): # i = widget that we clicked
-        print(i.text())
-        if i.text() == "&Yes":
+    def reset_pop_button(self, widget):
+        """The Buttons for reset destination popup (No Longer Used)."""
+        print(widget.text())
+        if widget.text() == "&Yes":
             print("selected OK")
             self.pub_nav.publish() # cancel 
             # cancel nav goal
@@ -525,18 +550,18 @@ class Ui_MainWindow(QMainWindow): ##object
         self.myDesc.setText(_translate("MainWindow", "EE Dept   AMD-R\n\nJonathan Lee\nKenji Eu\nChia Yu Hang\nNeo Jie En"))
 
 def batteryTemp(data: BatteryState, ui: Ui_MainWindow) -> None:
-    """Update battery on hmi."""
+    """Callback function when data is recived from battery topic to update battery on hmi."""
     ui.updateBattery(data.percentage)
     ui.updateTime()
 
 def logTemp_rosout(data: String):
-    """Add debug msg on hmi from ros topics."""
+    """Callback function to add debug msg on hmi from ros topics."""
     strdata = str(data.data)
     #ui.updateLog("kO")
     ui.ScrollLabel.verticalScrollBar().setValue(ui.ScrollLabel.verticalScrollBar().maximum())
 
 def logTemp_order(data: Int16):
-    """Order node."""
+    """Callback function when an order is recived (Order node)."""
     ui.updateLog("here")
     tem = str(data.data)
     ui.updateLog(tem)
@@ -552,9 +577,11 @@ if __name__ == "__main__":
         global app
         import sys
 
+        # Creating new node
         # rospy.init_node("sub_batt", anonymous=True)
         rospy.init_node('hmilog', anonymous=True)
 
+        # Creating UI object
         app = QtWidgets.QApplication(sys.argv)
         MainWindow = QtWidgets.QMainWindow()
         ui = Ui_MainWindow()
@@ -562,6 +589,7 @@ if __name__ == "__main__":
         MainWindow.showFullScreen()
         ui.updateMission("Idle")
 
+        # Subscribing to topics
         # rospy.init_node('hmi_cmd_vel', anonymous=True)
         rospy.Subscriber("hmilog", String, logTemp_rosout)
         rospy.Subscriber("battery", BatteryState, batteryTemp, ui)
