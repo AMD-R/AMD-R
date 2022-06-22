@@ -1,6 +1,4 @@
 #!/usr/bin/env python3
-
-
 import rospy
 import time
 from arm_controller.srv import *
@@ -10,7 +8,7 @@ NAMESPACE = "/arm"
 SERVICE_CMD = NAMESPACE + "/arm_cmd"
 SERVICE_STOP = NAMESPACE + "/x_stop"
 
-def clientVision(a):
+def clientVision(resultVision):
 
     rate = rospy.Rate(1)
     try:        
@@ -20,14 +18,14 @@ def clientVision(a):
 
         service = rospy.ServiceProxy(
             'Vision', Vision)
-        visionResp = service(a)
+        visionResp = service(resultVision)
 
         rate.sleep()
     except rospy.ServiceException as e:
         print("Service call failed: %s" % e)
 
 
-def clientArm(a, b, c, d, e, f):
+def clientArm(dist_x, dist_y, dist_z, rpm_y, rpm_z, cmd_x):
     rate = rospy.Rate(1)
     global armResp
     try:
@@ -35,13 +33,13 @@ def clientArm(a, b, c, d, e, f):
 
         service = rospy.ServiceProxy(
             SERVICE_CMD, Arm)
-        armResp = service(a, b, c, d, e, f)
+        armResp = service(dist_x, dist_y, dist_z, rpm_y, rpm_z, cmd_x)
         rate.sleep()
     except rospy.ServiceException as e:
         print("Service call failed: %s" % e)
 
 
-def clientNav(a):
+def clientNav(resultNav):
     rate = rospy.Rate(1)
     global navResp
     try:
@@ -49,13 +47,13 @@ def clientNav(a):
 
         service = rospy.ServiceProxy(
             'Nav', Nav)
-        navResp = service(a)
+        navResp = service(resultNav)
         rate.sleep()
     except rospy.ServiceException as e:
         print("Service call failed: %s" % e)
 
 
-def clientHMI(a):
+def clientHMI(resultHMI):
     rate = rospy.Rate(1)
     global hmiResp
     try:
@@ -63,7 +61,7 @@ def clientHMI(a):
 
         service = rospy.ServiceProxy(
             'HMI', HMI)
-        hmiResp = service(a, b, c)
+        hmiResp = service(resultHMI)
         rate.sleep()
     except rospy.ServiceException as e:
         print("Service call failed: %s" % e)
