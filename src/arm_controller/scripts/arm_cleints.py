@@ -2,21 +2,22 @@
 import rospy
 import time
 from arm_controller.srv import *
+from std_msgs.msg import Float32, Int16
 
 NAMESPACE = "/arm"
 # SERVICE TOPIC
 SERVICE_CMD = NAMESPACE + "/arm_cmd"
 SERVICE_STOP = NAMESPACE + "/x_stop"
 
-def clientVision(resultVision):
-
+def clientVision(resultVision: bool):
+    """Service proxy for Vision (OAK-D-LITE)."""
     rate = rospy.Rate(1)
     try:        
         global visionResp
 
         rospy.wait_for_service('Vision')
 
-        service = rospy.ServiceProxy(
+        service: Vision = rospy.ServiceProxy(
             'Vision', Vision)
         visionResp = service(resultVision)
 
@@ -25,13 +26,15 @@ def clientVision(resultVision):
         print("Service call failed: %s" % e)
 
 
-def clientArm(dist_x, dist_y, dist_z, rpm_y, rpm_z, cmd_x):
+def clientArm(dist_x: Float32, dist_y: Float32, dist_z: Float32,
+              rpm_y: Int16, rpm_z: Int16, cmd_x: bool):
+    """Service proxy for /arm/arm_cmd (robotic arm)."""
     rate = rospy.Rate(1)
     global armResp
     try:
         rospy.wait_for_service(SERVICE_CMD)
 
-        service = rospy.ServiceProxy(
+        service: Arm = rospy.ServiceProxy(
             SERVICE_CMD, Arm)
         armResp = service(dist_x, dist_y, dist_z, rpm_y, rpm_z, cmd_x)
         rate.sleep()
@@ -39,13 +42,14 @@ def clientArm(dist_x, dist_y, dist_z, rpm_y, rpm_z, cmd_x):
         print("Service call failed: %s" % e)
 
 
-def clientNav(resultNav):
+def clientNav(resultNav: bool):
+    """Service proxy for Nav (Navigation)."""
     rate = rospy.Rate(1)
     global navResp
     try:
         rospy.wait_for_service('Nav')
 
-        service = rospy.ServiceProxy(
+        service: Nav = rospy.ServiceProxy(
             'Nav', Nav)
         navResp = service(resultNav)
         rate.sleep()
@@ -53,13 +57,14 @@ def clientNav(resultNav):
         print("Service call failed: %s" % e)
 
 
-def clientHMI(resultHMI):
+def clientHMI(resultHMI: bool):
+    """Service proxy for HMI."""
     rate = rospy.Rate(1)
     global hmiResp
     try:
         rospy.wait_for_service('HMI')
 
-        service = rospy.ServiceProxy(
+        service: HMI = rospy.ServiceProxy(
             'HMI', HMI)
         hmiResp = service(resultHMI)
         rate.sleep()
@@ -68,12 +73,13 @@ def clientHMI(resultHMI):
 
 
 def clientStop():
+    """Service proxy for /arm/x_stop (stopping)."""
     rate = rospy.Rate(1)
     global stopResp
     try:
         rospy.wait_for_service(SERVICE_STOP)
 
-        service = rospy.ServiceProxy(
+        service: Stop = rospy.ServiceProxy(
             SERVICE_STOP, Stop)
         stopResp = service()
         rate.sleep()
@@ -81,12 +87,13 @@ def clientStop():
         print("Service call failed: %s" % e)
 
 def clientButton():
+    """Service proxy for buttonStatus."""
     rate = rospy.Rate(1)
     global buttonResp
     try:
         rospy.wait_for_service('buttonStatus')
 
-        service = rospy.ServiceProxy(
+        service: buttonStatus = rospy.ServiceProxy(
             'buttonStatus', buttonStatus)
         buttonResp = service(True)
         rate.sleep()
