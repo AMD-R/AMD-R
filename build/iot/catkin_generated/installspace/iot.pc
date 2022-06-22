@@ -1,8 +1,0 @@
-prefix=/home/jetson/robot_ws/install
-
-Name: iot
-Description: Description of iot
-Version: 0.0.0
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: 

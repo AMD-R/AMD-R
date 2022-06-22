@@ -1,2 +1,0 @@
-arm_controller:differential-drive:ds4_driver:hmi:hmi_modules:iot:laser_filters:localization:mpu6050_serial_to_imu:navigation:rplidar_ros
--DCATKIN_DEVEL_PREFIX=/home/jetson/robot_ws/devel -DCMAKE_INSTALL_PREFIX=/home/jetson/robot_ws/install -G Unix Makefiles

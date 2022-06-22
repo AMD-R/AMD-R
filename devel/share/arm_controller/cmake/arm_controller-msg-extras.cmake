@@ -1,2 +1,0 @@
-set(arm_controller_MESSAGE_FILES "")
-set(arm_controller_SERVICE_FILES "/home/jetson/robot_ws/src/arm_controller/srv/Arm.srv;/home/jetson/robot_ws/src/arm_controller/srv/HMI.srv;/home/jetson/robot_ws/src/arm_controller/srv/Vision.srv;/home/jetson/robot_ws/src/arm_controller/srv/Nav.srv;/home/jetson/robot_ws/src/arm_controller/srv/Stop.srv;/home/jetson/robot_ws/src/arm_controller/srv/buttonStatus.srv")
