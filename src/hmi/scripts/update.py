@@ -8,7 +8,7 @@ import actionlib
 from sympy import maximum
 import iconfinal
 
-from arm_controller.srv import *
+from arm_controller.scripts.arm_cleints import *
 
 import std_srvs.srv
 
@@ -22,97 +22,6 @@ from move_base_msgs.msg import MoveBaseAction, MoveBaseGoal, MoveBaseFeedback, M
 
 from hmi_modules.ctrl import Ui_ControlWindow
 from hmi_modules.analoggaugewidget import QRoundProgressBar
-
-NAMESPACE = "/arm"
-# SERVICE TOPIC
-SERVICE_CMD = NAMESPACE + "/arm_cmd"
-SERVICE_STOP = NAMESPACE + "/x_stop"
-
-def clientVision(a):
-
-    rate = rospy.Rate(1)
-    try:        
-        global visionResp
-
-        rospy.wait_for_service('Vision')
-
-        service = rospy.ServiceProxy(
-            'Vision', Vision)
-        visionResp = service(a)
-
-        rate.sleep()
-    except rospy.ServiceException as e:
-        print("Service call failed: %s" % e)
-
-
-def clientArm(a, b, c, d, e, f):
-    rate = rospy.Rate(1)
-    global armResp
-    try:
-        rospy.wait_for_service(SERVICE_CMD)
-
-        service = rospy.ServiceProxy(
-            SERVICE_CMD, Arm)
-        armResp = service(a, b, c, d, e, f)
-        rate.sleep()
-    except rospy.ServiceException as e:
-        print("Service call failed: %s" % e)
-
-
-def clientNav(a):
-    rate = rospy.Rate(1)
-    global navResp
-    try:
-        rospy.wait_for_service('Nav')
-
-        service = rospy.ServiceProxy(
-            'Nav', Nav)
-        navResp = service(a)
-        rate.sleep()
-    except rospy.ServiceException as e:
-        print("Service call failed: %s" % e)
-
-
-def clientHMI(a):
-    rate = rospy.Rate(1)
-    global hmiResp
-    try:
-        rospy.wait_for_service('HMI')
-
-        service = rospy.ServiceProxy(
-            'HMI', HMI)
-        hmiResp = service(a, b, c)
-        rate.sleep()
-    except rospy.ServiceException as e:
-        print("Service call failed: %s" % e)
-
-
-def clientStop():
-    rate = rospy.Rate(1)
-    global stopResp
-    try:
-        rospy.wait_for_service(SERVICE_STOP)
-
-        service = rospy.ServiceProxy(
-            SERVICE_STOP, Stop)
-        stopResp = service()
-        rate.sleep()
-    except rospy.ServiceException as e:
-        print("Service call failed: %s" % e)
-
-def clientButton():
-    rate = rospy.Rate(1)
-    global buttonResp
-    try:
-        rospy.wait_for_service('buttonStatus')
-
-        service = rospy.ServiceProxy(
-            'buttonStatus', buttonStatus)
-        buttonResp = service(True)
-        rate.sleep()
-    except rospy.ServiceException as e:
-        print("Service call failed: %s" % e)        
-
 
 class Ui_MainWindow(QMainWindow): ##object
 
