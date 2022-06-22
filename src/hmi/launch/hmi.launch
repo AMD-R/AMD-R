@@ -1,5 +1,5 @@
 <launch>
-    <master auto="start">
+    <master auto="start" />
 
     <!-- Full Nav -->
     <include file="$(find navigation)/launch/full_nav.launch" />
