@@ -8,7 +8,7 @@ import actionlib
 from sympy import maximum
 import iconfinal
 
-from arm_controller.scripts.arm_cleints import *
+from arm_controller.clients import *
 
 import std_srvs.srv
 
