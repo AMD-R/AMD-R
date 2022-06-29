@@ -13,6 +13,9 @@
 [submodule "hmi"]
 	path = src/hmi
 	url = https://github.com/AMD-R/hmi.git
+[submodule "hmi_modules"]
+	path = src/hmi_modules
+	url = https://github.com/AMD-R/hmi_modules.git
 [submodule "arm_controller"]
 	path = src/arm_controller
 	url = https://github.com/AMD-R/arm_controller.git
