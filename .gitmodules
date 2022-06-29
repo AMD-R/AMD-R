@@ -22,3 +22,6 @@
 [submodule "iot"]
 	path = src/iot
 	url = https://github.com/AMD-R/iot.git
+[submodule "localization"]
+	path = src/localization
+	url = https://github.com/AMD-R/localization.git
