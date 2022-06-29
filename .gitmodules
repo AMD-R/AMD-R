@@ -28,3 +28,6 @@
 [submodule "navigation"]
 	path = src/navigation
 	url = https://github.com/AMD-R/navigation.git
+[submodule "mpu6050_serial_to_imu"]
+	path = src/mpu6050_serial_to_imu
+	url = https://github.com/AMD-R/mpu6050_serial_to_imu.git
