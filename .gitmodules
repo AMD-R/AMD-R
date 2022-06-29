@@ -1,33 +1,33 @@
-[submodule "differential-drive"]
+[submodule "src/differential-drive"]
 	path = src/differential-drive
 	url = https://github.com/AMD-R/differential-drive.git
-[submodule "ds4_driver"]
+[submodule "src/ds4_driver"]
 	path = src/ds4_driver
 	url = https://github.com/AMD-R/ds4_driver.git
-[submodule "laser_filters"]
+[submodule "src/laser_filters"]
 	path = src/laser_filters
 	url = https://github.com/AMD-R/laser_filters.git
-[submodule "rplidar_ros"]
+[submodule "src/rplidar_ros"]
 	path = src/rplidar_ros
 	url = https://github.com/AMD-R/rplidar_ros.git
-[submodule "hmi"]
+[submodule "src/hmi"]
 	path = src/hmi
 	url = https://github.com/AMD-R/hmi.git
-[submodule "hmi_modules"]
+[submodule "src/hmi_modules"]
 	path = src/hmi_modules
 	url = https://github.com/AMD-R/hmi_modules.git
-[submodule "arm_controller"]
+[submodule "src/arm_controller"]
 	path = src/arm_controller
 	url = https://github.com/AMD-R/arm_controller.git
-[submodule "iot"]
+[submodule "src/iot"]
 	path = src/iot
 	url = https://github.com/AMD-R/iot.git
-[submodule "localization"]
+[submodule "src/localization"]
 	path = src/localization
 	url = https://github.com/AMD-R/localization.git
-[submodule "navigation"]
+[submodule "src/navigation"]
 	path = src/navigation
 	url = https://github.com/AMD-R/navigation.git
-[submodule "mpu6050_serial_to_imu"]
+[submodule "src/mpu6050_serial_to_imu"]
 	path = src/mpu6050_serial_to_imu
 	url = https://github.com/AMD-R/mpu6050_serial_to_imu.git
