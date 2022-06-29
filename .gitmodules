@@ -10,3 +10,6 @@
 [submodule "rplidar_ros"]
 	path = src/rplidar_ros
 	url = https://github.com/AMD-R/rplidar_ros.git
+[submodule "hmi"]
+	path = src/hmi
+	url = https://github.com/AMD-R/hmi.git
