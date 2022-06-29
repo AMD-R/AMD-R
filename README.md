@@ -7,12 +7,13 @@ AMD-R uses ROS 1 Noetic Ninjemys. To install it in your operating system follow 
 # Installation and Usage
 ## Installation
 ``` sh
-$ git clone https://github.com/AMD-R/AMD-R
+$ git clone https://github.com/AMD-R/AMD-R --recurse-submodules
 $ cd AMD-R
 $ catkin_make
 ```
 
-Note: `catkin_make` should be run after each update or first use installation.
+**Note:** `catkin_make` should be run after each update or first use installation.
+**Note:** This repository uses submodules. When pulling or cloning the `--recurse-submodules` flag should be used in order for the repository to clone/update properly. For more information on git submodule, you can read the guide [here](https://git-scm.com/book/en/v2/Git-Tools-Submodules)
 
 ## Usage
 Before use, `setup.bash` or `setup.zsh` file must be sourced. It can be sourced in the `.bashrc` file or zsh equivalence for covinience.
