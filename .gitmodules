@@ -19,3 +19,6 @@
 [submodule "arm_controller"]
 	path = src/arm_controller
 	url = https://github.com/AMD-R/arm_controller.git
+[submodule "iot"]
+	path = src/iot
+	url = https://github.com/AMD-R/iot.git
