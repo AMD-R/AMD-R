@@ -25,3 +25,6 @@
 [submodule "localization"]
 	path = src/localization
 	url = https://github.com/AMD-R/localization.git
+[submodule "navigation"]
+	path = src/navigation
+	url = https://github.com/AMD-R/navigation.git
