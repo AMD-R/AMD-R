@@ -58,3 +58,7 @@ This launches everything required for the AMD-R
 ``` sh
 $ roslaunch hmi hmi.launch
 ```
+
+# TODO
+  * [ ] Make a welcome/setup script
+  * [ ] QR Authentication
