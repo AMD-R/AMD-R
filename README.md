@@ -46,7 +46,20 @@ This only launches the nodes required for the navgation of the AMD-R.
 $ roslaunch navigation full_nav.launch
 ```
 
-### IOT Nodes
+This launches only the nodes used for navigation
+
+``` sh
+roslaunch navigation nav.launch
+```
+
+### None Navigation Nodes
+This launches all the nodes that aren't used by the AMD-R for navigation
+
+``` sh
+roslaunch navigation no_nav.launch
+```
+
+#### IOT Nodes
 This only launches the nodes required for the IOT on the AMD-R.
 ``` sh
 $ roslaunch iot iot.launch
@@ -54,9 +67,14 @@ $ roslaunch iot iot.launch
 
 ### HMI
 This launches everything required for the AMD-R
-
 ``` sh
 $ roslaunch hmi hmi.launch
+```
+
+This only launches the HMI but not the main nodes used by the AMD-R
+
+``` sh
+roslaunch hmi hmi_only.launch
 ```
 
 # TODO
