@@ -31,3 +31,6 @@
 [submodule "src/mpu6050_serial_to_imu"]
 	path = src/mpu6050_serial_to_imu
 	url = https://github.com/AMD-R/mpu6050_serial_to_imu.git
+[submodule "src/amd-r-welcome"]
+	path = src/amd-r-welcome
+	url = https://github.com/AMD-R/amd-r-welcome.git
