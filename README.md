@@ -78,5 +78,5 @@ roslaunch hmi hmi_only.launch
 ```
 
 # TODO
-  * [ ] Make a welcome/setup script
+  * [x] Make a welcome/setup script
   * [ ] QR Authentication
